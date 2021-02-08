@@ -5,11 +5,7 @@ class MachineDaily(models.Model):
     _name = "machine.daily"
 
     name = fields.Date(default=fields.Date.today, required=True, string="التاريخ")
-    shifts_number = fields.Selection([("0", "0"), ("1", "1"),
-                                      ("2", "2"), ("3", "3"), ("4", "4")], required=True,
-                                     string="عدد الورادي")
-    hours_per_shift = fields.Selection([("6", "6"), ("8", "8"), ("12", "12")], default="8", required=True,
-                                       string="عدد ساعات الوردية")
+    hours_per_shift = fields.Integer(default=8, required=True, string="عدد ساعات الوردية")
     daily_workers = fields.Integer(required=True, string="عدد عمال اليومية")
     machine_shift_ids = fields.One2many("machine.shift", "daily_id", string="توزيعة المكن")
     worker_daily_cost_ids = fields.One2many("worker.daily.cost", "daily_id", string="يوميات")

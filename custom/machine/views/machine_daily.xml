@@ -16,7 +16,6 @@
                         </div>
                         <group>
                             <group string="تشغيل المكن">
-                                <field name="shifts_number"/>
                                 <field name="hours_per_shift"/>
                                 <field name="machine_shift_ids">
                                     <tree editable="bottom" create="0" delete="0" style="border:solid 1px">

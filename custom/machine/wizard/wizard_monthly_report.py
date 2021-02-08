@@ -101,19 +101,22 @@ class WizardMonthlyReport(models.TransientModel):
                     worksheet.write(row, 3, total_hours, formatters['center'])
                     worksheet.write(row, 4, machine_workers_cost, formatters['center'])
                     worksheet.write(row, 5, total_workers_cost, formatters['center'])
-
+                cost_row = row
                 for cost in machine_extra_cost:
-                    worksheet.write(row, 6, cost.description, formatters['center'])
-                    worksheet.write(row, 7, cost.cost, formatters['center'])
+                    worksheet.write(cost_row, 6, cost.description, formatters['center'])
+                    worksheet.write(cost_row, 7, cost.cost, formatters['center'])
                     days_total_daily_extra_cost += cost.cost
+                    cost_row += 1
 
+                production_row = row
                 for production in machine_production:
-                    worksheet.write(row, 8, production.total, formatters['center'])
+                    worksheet.write(production_row, 8, production.total, formatters['center'])
                     days_total_production += production.total
-                    worksheet.write(row, 9, production.fee_per_kg, formatters['center'])
-                    worksheet.write(row, 10, production.production_type.name, formatters['center'])
-                    worksheet.write(row, 11, production.amount, formatters['center'])
+                    worksheet.write(production_row, 9, production.fee_per_kg, formatters['center'])
+                    worksheet.write(production_row, 10, production.production_type.name, formatters['center'])
+                    worksheet.write(production_row, 11, production.amount, formatters['center'])
                     days_total_production_amount += production.amount
+                    production_row += 1
 
                 if max_rows > 0:
                     row = row + max_rows + 1
