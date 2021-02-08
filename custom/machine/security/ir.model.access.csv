@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_daily_machine,access_daily_machine,model_machine_daily,,1,1,1,1
+access_machine_shift,access_machine_shift,model_machine_shift,,1,1,1,1
+access_worker_daily_cost,access.worker.daily.cost,model_worker_daily_cost,,1,1,1,1
+access_machine_extra_daily_cost,access.machine.extra.daily.cost,model_machine_extra_daily_cost,,1,1,1,1
+access_machine_production_daily,access.machine.production.daily,model_machine_production_daily,,1,1,1,1
+access_production_type,access_access_production_type,model_production_type,,1,1,1,1
+access_machine_machine,access.machine.machine,model_machine_machine,,1,1,1,1
+access_monthly_cost,access_monthly_cost,model_monthly_cost,,1,1,1,1
+access_monthly_workers_wage,access_monthly_workers_wage,model_monthly_workers_wage,,1,1,1,1

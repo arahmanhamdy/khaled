@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="machine_daily_form_view" model="ir.ui.view">
+            <field name="name">machine.machine_daily.form</field>
+            <field name="model">machine.daily</field>
+            <field name="arch" type="xml">
+                <form string="Daily Report">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="تشغيل المكن">
+                                <field name="shifts_number"/>
+                                <field name="hours_per_shift"/>
+                                <field name="machine_shift_ids">
+                                    <tree editable="bottom" create="0" delete="0" style="border:solid 1px">
+                                        <field name="machine" readonly="True" force_save="True"/>
+                                        <field name="shifts_number"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group string="يوميات العمال">
+                                <field name="daily_workers"/>
+                                <field name="worker_daily_cost_ids">
+                                    <tree editable="bottom" create="0" delete="0">
+                                        <field name="name" readonly="True" force_save="True"/>
+                                        <field name="cost"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="extra_cost"/>
+                            </group>
+                            <field name="machine_extra_cost_ids" attrs="{'invisible': [('extra_cost', '=', False)]}">
+                                <tree editable="bottom">
+                                    <field name="machine"/>
+                                    <field name="description"/>
+                                    <field name="cost"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string="الإنتاج">
+                            <field name="production_ids" nolabel="1">
+                                <tree editable="bottom" create="1" delete="0">
+                                    <field name="machine" width="20"/>
+                                    <field name="production_type" width="20"/>
+                                    <field name="amount" width="20"/>
+                                    <field name="fee_per_kg" width="20"/>
+                                    <field name="total" width="20"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="machine_daily_act_window" model="ir.actions.act_window">
+            <field name="name">التقرير اليومي</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">machine.daily</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="machines_action" model="ir.actions.act_window">
+            <field name="name">المكن</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">machine.machine</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="production_types_action" model="ir.actions.act_window">
+            <field name="name">أنواع الإنتاج</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">production.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="المكن" id="machine_main_menu"/>
+        <menuitem name="التقارير اليومية" id="machine_daily_menu" parent="machine_main_menu"
+                  action="machine_daily_act_window"/>
+        <menuitem name="إعدادات" id="settings_menu" parent="machine_main_menu" sequence="100"/>
+        <menuitem name="إدخال المكن" id="machines_menu" parent="settings_menu" action="machines_action"/>
+        <menuitem name="أنواع الإنتاج" id="production_types_menu" parent="settings_menu" action="production_types_action"/>
+
+    </data>
+</odoo>

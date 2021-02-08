@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="machine1" model="machine.machine">
+            <field name="name">مكنة 1</field>
+            <field name="rent" eval="500"/>
+        </record>
+        <record id="machine2" model="machine.machine">
+            <field name="name">مكنة 2</field>
+            <field name="rent" eval="500"/>
+        </record>
+        <record id="machine3" model="machine.machine">
+            <field name="name">مكنة 3</field>
+        </record>
+        <record id="machine4" model="machine.machine">
+            <field name="name">مكنة 4</field>
+        </record>
+    </data>
+</odoo>

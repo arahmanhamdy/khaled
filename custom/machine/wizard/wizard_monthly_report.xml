@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="wizard_monthly_report_view_form" model="ir.ui.view">
+        <field name="name">wizard.monthly.report.form</field>
+        <field name="model">wizard.monthly.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <group states="choose">
+                    <field name="state" invisible="1"/>
+                    <field name="month"/>
+                    <field name="year"/>
+                    <field name="machine_ids"/>
+                </group>
+                <group states="download">
+                    <field name="xls_file" readonly="1" filename="name"/>
+                </group>
+                <footer>
+                    <button name="print_report_xls" string="إعداد التقرير"
+                            type="object" class="oe_highlight" states="choose"/>
+                    <button name="action_go_back" string="الرجوع"
+                            type="object" class="oe_highlight" states="download"/>
+                    or
+                    <button string="إلغاء" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_monthly_report" model="ir.actions.act_window">
+        <field name="name">التقرير الشهري</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.monthly.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="التقرير الشهري" id="monthly_wizard_menu" parent="machine_main_menu"
+                  action="action_wizard_monthly_report"/>
+</odoo>
