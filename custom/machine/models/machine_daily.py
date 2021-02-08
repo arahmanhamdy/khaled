@@ -25,7 +25,7 @@ class MachineDaily(models.Model):
         self.worker_daily_cost_ids = [[5, 0, 0]]
         self.worker_daily_cost_ids = workers
 
-    @api.onchange("machine_shift_ids")
+    @api.onchange("name")
     def _onchange_machine_shift_ids(self):
         machine_lines = []
         all_machines = self.env["machine.machine"].search([])
